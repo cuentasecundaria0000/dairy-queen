@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conos y Sundaes | Dairy Queen</title>
+    <!-- CSS unificado -->
+    <link rel="stylesheet" href="card1.css">
+</head>
+<body class="cones-page">
+
+    <!-- 1. WRAPPER PRINCIPAL -->
+    <div class="main-content-wrapper">
+
+        <header class="navbar">
+            <div class="container nav-content">
+                <div class="logo">
+                    <img src="img/logo.png" alt="DQ Logo">
+                </div>
+                <nav class="top-buttons">
+                    <a href="index.html">Inicio</a>
+                    <a href="card2.html">Atrás</a>
+                    <a href="card4.html">Siguiente</a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero-catalog" style="background: linear-gradient(135deg, #0046ad 0%, #002d72 100%);">
+            <h1>CONOS Y SUNDAES</h1>
+            <p>El clásico sabor que nos define</p>
+        </section>
+
+        <main class="container">
+            <div class="catalog-grid">
+
+                <!-- PRODUCTO 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/conoclasico.png" alt="Cono Vainilla">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">El Icono</span>
+                        <h2>Cono Clásico DQ®</h2>
+                        <p class="description">
+                            Nuestro famoso helado suave de vainilla servido en un cono de galleta crujiente con el icónico rizado.
+                        </p>
+                        <div class="tech-specs">
+                            <div class="spec"><span>Grasa Butírica:</span> 5% (Bajo en grasa)</div>
+                            <div class="spec"><span>Temperatura:</span> -5°C</div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">$29.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Cono Clásico', 29)">
+                                Ordenar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/conocubierto.png" alt="Cono Cubierto">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">Favorito</span>
+                        <h2>Cono Cubierto</h2>
+                        <p class="description">
+                            Helado de vainilla sumergido en una cobertura de chocolate que se endurece al instante.
+                        </p>
+                        <div class="tech-specs">
+                            <div class="spec"><span>Cobertura:</span> Chocolate Premium</div>
+                            <div class="spec"><span>Alérgenos:</span> Lácteos, Soya</div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">$35.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Cono Cubierto', 35)">
+                                Ordenar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/sundae.png" alt="Sundae DQ">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">Clásico</span>
+                        <h2>Sundae DQ®</h2>
+                        <p class="description">
+                            Vaso de helado de vainilla bañado con tu topping caliente o frío favorito. Dulce y cremoso.
+                        </p>
+                        <div class="tech-specs">
+                            <div class="spec"><span>Toppings:</span> Chocolate, Fresa, Caramelo</div>
+                            <div class="spec"><span>Presentación:</span> Vaso biodegradable</div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">$45.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Sundae DQ', 45)">
+                                Ordenar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 4 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/conowuafle.png" alt="Cono Waffle">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">Especialidad</span>
+                        <h2>Cono de Waffle</h2>
+                        <p class="description">
+                            Un cono crujiente de galleta waffle hecha a mano, con helado y toppings premium.
+                        </p>
+                        <div class="tech-specs">
+                            <div class="spec"><span>Base:</span> Galleta horneada</div>
+                            <div class="spec"><span>Incluye:</span> Chocolate y nueces</div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">$79.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Cono de Waffle', 79)">
+                                Ordenar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 Dairy Queen México - Calidad garantizada en cada rizo.</p>
+        </footer>
+
+    </div> <!-- Fin main-content-wrapper -->
+
+    <!-- 2. CARRITO FLOTANTE -->
+    <aside id="side-cart">
+        <div class="panel-tab" onclick="toggleCart()">
+            🛒 <span id="cart-count-tab">0</span>
+        </div>
+
+        <div class="panel-content">
+            <div class="panel-header">
+                <h3>Mi Pedido</h3>
+                <button class="close-btn" onclick="toggleCart()">✖</button>
+            </div>
+
+            <div class="branch-select">
+                <label>Selecciona Sucursal:</label>
+                <select id="sucursal">
+                    <option>DQ Villahermosa</option>
+                    <option>DQ Cárdenas</option>
+                    <option>DQ Comalcalco</option>
+                    <option>DQ Macuspana</option>
+                </select>
+            </div>
+
+            <div id="cart-items-list" class="items-list">
+                <p class="empty-msg">Tu carrito está vacío</p>
+            </div>
+
+            <div class="panel-footer">
+                <div class="total-line">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+<!-- Botón Principal -->
+    <button class="btn-confirmar" onclick="confirmarPedido()">
+        CONFIRMAR PEDIDO
+    </button>
+
+    <!-- Botón Limpiar -->
+    <button class="btn-clear" onclick="limpiarCarrito()">
+        Limpiar Todo
+    </button>
+
+    <!-- Compra anterior -->
+    <button class="btn-clear" onclick="verCompraAnterior()">
+        Ver compra anterior
+    </button>
+
+</div>
+   
+        </div>
+    </aside>
+
+<!-- Modal General Dinámico -->
+<div id="modal-container" class="modal-overlay">
+    <div class="modal-content dq-card-style">
+        <div class="modal-header">
+            <span id="modal-icon">🍦</span>
+            <h2 id="modal-title">Título</h2>
+        </div>
+        <div class="modal-body">
+            <p id="modal-text">Mensaje aquí...</p>
+        </div>
+        <div class="modal-footer">
+            <!-- El JS ocultará o mostrará el botón Cancelar según la config -->
+            <button id="modal-btn-secondary" onclick="cerrarDqModal()">Cancelar</button>
+            <button id="modal-btn-primary">Aceptar</button>
+        </div>
+    </div>
+</div>            </div>
+        </div>
+    </aside>
+
+    <!-- JS -->
+    <script src="card.js"></script>
+
+</body>
+</html>

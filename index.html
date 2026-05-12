@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DQ - Para Llevar</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+
+<body>
+
+<section class="hero-image"></section>
+
+<header class="navbar">
+  <div class="logo">
+    <a href="index.html">
+      <img src="img/logo.png" alt="logo">
+    </a>
+  </div>
+
+  <nav>
+    <!-- BOTÓN CARRITO -->
+</div>
+    <div class="search-container">
+        <div class="search-box">
+            <input 
+                type="text"
+                id="searchInput"
+                placeholder="Buscar productos..."
+                autocomplete="off"
+            >
+            <button id="searchBtn">
+                🔍
+            </button>
+        </div>
+        <div id="suggestions" class="suggestions-box"></div>
+    </div>
+    <a class="active" href="#">INICIO</a>
+    <a href="sucursales.html">SUCURSALES</a>
+    <a href="noticias.html">NOTICIAS DQ®</a>
+  </nav>
+
+</header>
+
+<div class="content">
+  <section class="hero">
+      <h2>Vuelve a saborear la alegría con DQ®</h2>
+      <p>productos disponibles esta temporada</p>
+  </section>
+
+  <section class="menu">
+      <div class="card">
+          <a href="card1.html">
+              <img src="img/Blizzard.png" alt="">
+              <h3>BLIZZARDS</h3>
+          </a>
+      </div>
+      <div class="card">
+          <a href="card2.html">
+              <img src="img/pastel.png" alt="">
+              <h3>PASTELES DQ</h3>
+          </a>
+      </div>
+      <div class="card">
+          <a href="card3.html">
+              <img src="img/HELADOS.PNG" alt="">
+              <h3>HELADOS DQ</h3>
+          </a>
+      </div>
+      <div class="card">
+          <a href="card4.html">
+              <img src="img/BEBIDAS.PNG" alt="">
+              <h3>BEBIDAS DQ</h3>
+          </a>
+      </div>
+  </section>
+</div>
+
+<section class="promociones">
+    <a href="promociones.html" class="btn-promociones">Promociones</a>
+
+    <div class="promo-container">
+        <div class="promo-card" onclick="abrirPromo('img/2x1.webp', '2x1 en Blizzards', '¡Doble sabor para compartir! Elige entre nuestros sabores clásicos como Oreo, Choco Extreme o Fresa. Válido solo sábados y domingos de este mes.')">
+            <img src="img/2x1.webp" alt="">
+            <h3>2x1 en Blizzards</h3>
+            <p>Solo este fin de semana</p>
+        </div>
+
+        <div class="promo-card" onclick="abrirPromo('img/familiar.png', 'Combo Familiar DQ', 'El paquete perfecto para la familia. Incluye 4 mini Blizzards y un pastel mediano de tu elección con un 30% de descuento aplicado.')">
+            <img src="img/familiar.png" alt="">
+            <h3>Combo Familiar</h3>
+            <p>Ahorra hasta 30%</p>
+        </div>
+
+        <div class="promo-card" onclick="abrirPromo('img/gratis.jpg', 'Helado Gratis', '¡Queremos verte de nuevo! En la compra de cualquier producto grande, tu siguiente cono sencillo es totalmente gratis presentando tu ticket vigente.')">
+            <img src="img/gratis.jpg" alt="">
+            <h3>Helado Gratis</h3>
+            <p>En tu segunda compra</p>
+        </div>
+    </div>
+</section>
+
+<div id="modalPromocion" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="cerrarPromo()">&times;</span>
+        <img id="imgModal" src="" alt="Promo">
+        <h2 id="tituloModal"></h2>
+        <p id="infoModal"></p>
+        <button class="btn-accion" onclick="cerrarPromo()">Cerrar</button>
+    </div>
+</div>
+
+<footer>
+  <div class="ayuda">
+      <a href="nosotros.html" class="btn-footer">SOBRE NOSOTROS</a>
+      <a href="preguntas.html" class="btn-footer">PREGUNTAS FRECUENTES</a>
+      <a href="sucursales.html" class="btn-footer">UBICACIONES</a>
+      <a href="ayuda.html" class="btn-footer">ayuda</a>
+
+  </div>
+  <p>© 2026 <br>Dairy Queen</p>
+  <!-- 2. CARRITO: Fuera del wrapper para que flote a la derecha -->
+    <aside id="side-cart">
+        <div class="panel-tab" onclick="toggleCart()">
+            <span class="tab-icon">🛒</span>
+            <span id="cart-count-tab">0</span>
+        </div>
+
+        <div class="panel-content">
+            <div class="panel-header">
+                <h2>🍦 Mi Pedido</h2>
+                <button class="close-btn" onclick="toggleCart()">✖</button>
+            </div>
+
+            <div class="branch-select">
+                <label>Selecciona Sucursal:</label>
+                <select id="sucursal">
+                    <option>DQ Villahermosa</option>
+                    <option>DQ Cárdenas</option>
+                    <option>DQ Comalcalco</option>
+                    <option>DQ Macuspana</option>
+                </select>
+            </div>
+
+            <div id="cart-items-list" class="items-list">
+                <p class="empty-msg">Tu carrito está vacío</p>
+            </div>
+
+            <div class="panel-footer">
+
+    <div class="total-line">
+        <span>Total:</span>
+        <span id="cart-total">$0.00</span>
+    </div>
+
+    <!-- Botón Principal -->
+    <button class="btn-confirmar" onclick="confirmarPedido()">
+        CONFIRMAR PEDIDO
+    </button>
+
+    <!-- Botón Limpiar -->
+    <button class="btn-clear" onclick="limpiarCarrito()">
+        Limpiar Todo
+    </button>
+
+    <!-- Compra anterior -->
+    <button class="btn-clear" onclick="verCompraAnterior()">
+        Ver compra anterior
+    </button>
+
+</div>
+   
+        </div>
+    </aside>
+
+    
+
+</aside>
+</footer>
+
+<script>
+// --- Lógica para el Buscador ---
+const productosDQ = [
+    { nombre: "Blizzards", link: "card1.html" },
+    { nombre: "Pasteles DQ", link: "card2.html" },
+    { nombre: "Helados DQ", link: "card3.html" },
+    { nombre: "Bebidas DQ", link: "card4.html" },
+    { nombre: "Promociones", link: "promociones.html" },
+    { nombre: "Sucursales", link: "sucursales.html" },
+    { nombre: "Ubicaciones", link: "sucursales.html" },
+    { nombre: "Preguntas Frecuentes", link: "preguntas.html" },
+    { nombre: "Sobre Nosotros", link: "nosotros.html" }
+];
+
+const inputBusqueda = document.getElementById("searchInput");
+const sugerenciasBox = document.getElementById("suggestions");
+const botonBusqueda = document.getElementById("searchBtn");
+
+// Función para mostrar sugerencias mientras escribes
+inputBusqueda.addEventListener("input", () => {
+    const texto = inputBusqueda.value.toLowerCase().trim();
+    sugerenciasBox.innerHTML = "";
+
+    if (texto === "") {
+        sugerenciasBox.style.display = "none";
+        return;
+    }
+
+    const filtrados = productosDQ.filter(p => p.nombre.toLowerCase().includes(texto));
+
+    if (filtrados.length > 0) {
+        filtrados.forEach(p => {
+            const div = document.createElement("div");
+            div.className = "suggestion-item";
+            div.innerHTML = `🔍 ${p.nombre}`;
+            div.onclick = () => {
+                window.location.href = p.link;
+            };
+            sugerenciasBox.appendChild(div);
+        });
+        sugerenciasBox.style.display = "block";
+    } else {
+        sugerenciasBox.style.display = "none";
+    }
+});
+
+// Función para el botón de búsqueda
+function realizarBusqueda() {
+    const texto = inputBusqueda.value.toLowerCase().trim();
+    const coincidencia = productosDQ.find(p => p.nombre.toLowerCase().includes(texto));
+    
+    if (coincidencia) {
+        window.location.href = coincidencia.link;
+    } else if (texto !== "") {
+        alert("No se encontró el producto.");
+    }
+}
+
+botonBusqueda.addEventListener("click", realizarBusqueda);
+inputBusqueda.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") realizarBusqueda();
+});
+
+// Cerrar sugerencias al hacer clic fuera
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-container")) {
+        sugerenciasBox.style.display = "none";
+    }
+});
+
+// Lógica Navbar Scroll
+window.addEventListener("scroll", () => {
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 50) {
+        navbar.classList.add("grande");
+    } else {
+        navbar.classList.remove("grande");
+    }
+});
+
+// Lógica Promociones
+function abrirPromo(imagen, titulo, detalle) {
+    document.getElementById("imgModal").src = imagen;
+    document.getElementById("tituloModal").innerText = titulo;
+    document.getElementById("infoModal").innerText = detalle;
+    document.getElementById("modalPromocion").style.display = "block";
+}
+
+function cerrarPromo() {
+    document.getElementById("modalPromocion").style.display = "none";
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById("modalPromocion");
+    if (event.target == modal) cerrarPromo();
+}
+// =========================
+// CARRITO DQ (VERSIÓN LIMPIA)
+// =========================
+
+let carrito = JSON.parse(localStorage.getItem("dq_carrito")) || [];
+let ultimaCompra = JSON.parse(localStorage.getItem("dq_ultima_compra")) || [];
+
+/* =========================
+   GUARDAR
+========================= */
+function guardarCarrito() {
+    localStorage.setItem("dq_carrito", JSON.stringify(carrito));
+}
+
+/* =========================
+   TOGGLE CARRITO
+========================= */
+function toggleCart() {
+    const sideCart = document.getElementById("side-cart");
+    if (sideCart) sideCart.classList.toggle("active");
+}
+
+/* =========================
+   AGREGAR PRODUCTO
+========================= */
+function agregarAlCarrito(nombre, precio) {
+    const item = carrito.find(p => p.nombre === nombre);
+
+    if (item) {
+        item.cantidad++;
+    } else {
+        carrito.push({ nombre, precio, cantidad: 1 });
+    }
+
+    actualizarInterfaz();
+}
+
+/* =========================
+   QUITAR PRODUCTO
+========================= */
+function quitarProducto(nombre) {
+    const item = carrito.find(p => p.nombre === nombre);
+
+    if (!item) return;
+
+    item.cantidad--;
+
+    if (item.cantidad <= 0) {
+        carrito = carrito.filter(p => p.nombre !== nombre);
+    }
+
+    actualizarInterfaz();
+}
+
+/* =========================
+   ACTUALIZAR UI
+========================= */
+function actualizarInterfaz() {
+
+    guardarCarrito();
+
+    const lista = document.getElementById("cart-items-list");
+    const totalElement = document.getElementById("cart-total");
+    const contador = document.getElementById("cart-count-nav");
+
+    if (!lista || !totalElement) return;
+
+    lista.innerHTML = "";
+
+    let total = 0;
+    let cantidad = 0;
+
+    if (carrito.length === 0) {
+        lista.innerHTML = `<p class="empty-msg">Tu carrito está vacío</p>`;
+    }
+
+    carrito.forEach(item => {
+
+        const subtotal = item.precio * item.cantidad;
+
+        total += subtotal;
+        cantidad += item.cantidad;
+
+        lista.innerHTML += `
+            <div class="cart-item-row">
+                <div>
+                    <strong>${item.nombre}</strong>
+                    <p>x${item.cantidad}</p>
+                </div>
+
+                <strong>$${subtotal.toFixed(2)}</strong>
+
+                <div class="item-controls-dq">
+                    <button onclick="quitarProducto('${item.nombre}')">−</button>
+                    <button onclick="agregarAlCarrito('${item.nombre}', ${item.precio})">+</button>
+                </div>
+            </div>
+        `;
+    });
+
+    totalElement.innerText = "$" + total.toFixed(2);
+
+    if (contador) contador.innerText = cantidad;
+}
+
+/* =========================
+   LIMPIAR
+========================= */
+function limpiarCarrito() {
+    carrito = [];
+    actualizarInterfaz();
+}
+
+/* =========================
+   CONFIRMAR PEDIDO
+========================= */
+function confirmarPedido() {
+
+    if (carrito.length === 0) {
+        alert("Tu carrito está vacío");
+        return;
+    }
+
+    localStorage.setItem("dq_ultima_compra", JSON.stringify(carrito));
+
+    alert("Pedido confirmado 🍦");
+
+    carrito = [];
+    actualizarInterfaz();
+}
+
+/* =========================
+   VER COMPRA ANTERIOR
+========================= */
+function verCompraAnterior() {
+
+    const compra = JSON.parse(localStorage.getItem("dq_ultima_compra"));
+
+    if (!compra) {
+        alert("No hay compras anteriores");
+        return;
+    }
+
+    let texto = "🧾 Compra anterior:\n\n";
+    let total = 0;
+
+    compra.forEach(item => {
+        texto += `${item.nombre} x${item.cantidad}\n`;
+        total += item.precio * item.cantidad;
+    });
+
+    texto += `\nTotal: $${total.toFixed(2)}`;
+
+    alert(texto);
+}
+
+/* =========================
+   INICIO
+========================= */
+document.addEventListener("DOMContentLoaded", actualizarInterfaz);
+</script>
+
+</body>
+</html>

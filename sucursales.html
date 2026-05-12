@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucursales DQ Tabasco</title>
+    <link rel="stylesheet" href="sucursales.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="index.html">
+            <img src="img/logo.png" alt="DQ">
+        </a>
+    </div>
+      <nav class="top-buttons">
+        <a href="index.html">INICIO</a>
+        <a href="sucursales.html" class="active">SUCURSALES</a>
+        <a href="noticias.html">NOTICIAS</a>
+    </nav>
+</header>
+</header>
+
+<section class="hero">
+    <h1>Sucursales Dairy Queen Tabasco</h1>
+</section>
+
+<div class="filters">
+    <button class="filter-btn active" onclick="filtrar('todos')">Todos</button>
+    <button class="filter-btn" onclick="filtrar('villahermosa')">Villahermosa</button>
+    <button class="filter-btn" onclick="filtrar('cardenas')">Cárdenas</button>
+    <button class="filter-btn" onclick="filtrar('comalcalco')">Comalcalco</button>
+    <button class="filter-btn" onclick="filtrar('macuspana')">Macuspana</button>
+</div>
+
+<div class="content">
+    <div class="sucursales-grid" id="grid-sucursales">
+
+        <div class="card villahermosa" data-open="11:00" data-close="22:00">
+            <span class="estado"></span>
+            <h3>DQ Galerías Tabasco</h3>
+            <p>📍 Tabasco 2000</p>
+            <p>🕒 11:00 AM - 10:00 PM</p>
+            <a class="map-btn" target="_blank" href="http://google.com/maps?q=Dairy+Queen+Galerias+Tabasco">Ver en Maps</a>
+        </div>
+
+        <div class="card villahermosa" data-open="11:00" data-close="22:00">
+            <span class="estado"></span>
+            <h3>DQ Plaza Altabrisa</h3>
+            <p>📍 Periférico Carlos Pellicer</p>
+            <p>🕒 11:00 AM - 10:00 PM</p>
+            <a class="map-btn" target="_blank" href="http://google.com/maps?q=Dairy+Queen+Altabrisa">Ver en Maps</a>
+        </div>
+
+        <div class="card villahermosa" data-open="11:00" data-close="21:30">
+            <span class="estado"></span>
+            <h3>DQ Europlaza</h3>
+            <p>📍 Blvd. Adolfo Ruiz Cortines</p>
+            <p>🕒 11:00 AM - 9:30 PM</p>
+            <a class="map-btn" target="_blank" href="http://google.com/maps?q=Dairy+Queen+Europlaza">Ver en Maps</a>
+        </div>
+
+        <div class="card cardenas" data-open="11:00" data-close="21:00">
+            <span class="estado"></span>
+            <h3>DQ Cárdenas Sendero</h3>
+            <p>📍 Cárdenas - Villahermosa</p>
+            <p>🕒 11:00 AM - 9:00 PM</p>
+            <a class="map-btn" target="_blank" href="http://google.com/maps?q=Dairy+Queen+Sendero+Cardenas">Ver en Maps</a>
+        </div>
+
+        <div class="card comalcalco" data-open="11:00" data-close="21:00">
+            <span class="estado"></span>
+            <h3>DQ Comalcalco</h3>
+            <p>📍 Centro Comalcalco</p>
+            <p>🕒 11:00 AM - 9:00 PM</p>
+            <a class="map-btn" target="_blank" href="http://google.com/maps?q=Dairy+Queen+Comalcalco">Ver en Maps</a>
+        </div>
+
+        <div class="card macuspana" data-open="11:00" data-close="20:30">
+            <span class="estado"></span>
+            <h3>DQ Macuspana</h3>
+            <p>📍 Centro Macuspana</p>
+            <p>🕒 11:00 AM - 8:30 PM</p>
+            <a class="map-btn" target="_blank" href="http://google.com/maps?q=Dairy+Queen+Macuspana">Ver en Maps</a>
+        </div>
+
+        <div class="card villahermosa" data-open="11:00" data-close="21:00">
+            <span class="estado"></span>
+            <h3>DQ Plaza Olmeca</h3>
+            <p>📍 Villahermosa Centro</p>
+            <p>🕒 11:00 AM - 9:00 PM</p>
+            <a class="map-btn" target="_blank" href="http://google.com/maps?q=Dairy+Queen+Plaza+Olmeca">Ver en Maps</a>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    © 2026 Dairy Queen Tabasco
+</footer>
+
+<script>
+    // FUNCIÓN DE FILTRO
+    function filtrar(municipio) {
+        // Actualizar botones
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        // Filtrar tarjetas
+        const tarjetas = document.querySelectorAll('.card');
+        tarjetas.forEach(tarjeta => {
+            if (municipio === 'todos') {
+                tarjeta.style.display = "flex";
+            } else if (tarjeta.classList.contains(municipio)) {
+                tarjeta.style.display = "flex";
+            } else {
+                tarjeta.style.display = "none";
+            }
+        });
+    }
+
+    // FUNCIÓN DE HORARIOS (LA QUE YA TENÍAMOS)
+    function actualizarHorarios() {
+        const ahora = new Date();
+        const horaActual = ahora.getHours() + (ahora.getMinutes() / 60);
+
+        document.querySelectorAll('.card').forEach(card => {
+            const opening = parseFloat(card.getAttribute('data-open').replace(':', '.'));
+            const closing = parseFloat(card.getAttribute('data-close').replace(':', '.'));
+            const estadoElement = card.querySelector('.estado');
+
+            if (horaActual >= opening && horaActual < closing) {
+                estadoElement.textContent = "● ABIERTO";
+                estadoElement.style.background = "#28a745";
+            } else {
+                estadoElement.textContent = "○ CERRADO";
+                estadoElement.style.background = "#dc3545";
+            }
+        });
+    }
+
+    actualizarHorarios();
+</script>
+
+</body>
+</html>

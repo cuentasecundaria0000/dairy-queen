@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Pasteles DQ | Dairy Queen</title>
+    <!-- Usamos el mismo CSS para mantener la consistencia -->
+    <link rel="stylesheet" href="card1.css">
+</head>
+<body>
+
+    <!-- 1. WRAPPER PRINCIPAL: Todo lo que se debe encoger/reacomodar -->
+    <div class="main-content-wrapper">
+        
+        <header class="navbar">
+            <div class="container nav-content">
+                <div class="logo">
+                    <img src="img/logo.png" alt="DQ Logo">
+                </div>
+                <nav class="top-buttons">
+                    <a href="index.html">Inicio</a>
+                    <a href="card1.html">Atrás</a>
+                    <a href="card3.html">Siguiente</a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero-catalog">
+            <h1>PASTELES HELADOS DQ®</h1>
+            <p>La combinación perfecta de Blizzard® y helado cremoso</p>
+        </section>
+
+        <main class="container">
+            <div class="catalog-grid">
+
+                <!-- PRODUCTO 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/pasteloreo.jpg" alt="Pastel Blizzard Oreo">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">Best Seller</span>
+                        <h2>Pastel Blizzard® Oreo®</h2>
+                        <p class="description">
+                            Base de helado de vainilla, centro de fudge y chocolate crujiente, cubierto con trozos de galleta Oreo.
+                        </p>
+                        <div class="tech-specs">
+                            <div class="spec"><span>Rendimiento:</span> 8-10 personas</div>
+                            <div class="spec"><span>Diámetro:</span> 8 pulgadas (20 cm)</div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">$459.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Pastel Oreo', 459)">Ordenar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/pastelchocobrowni.jpg" alt="Pastel Choco Brownie">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">Premium</span>
+                        <h2>Choco Brownie Extreme</h2>
+                        <p class="description">
+                            Cargado de trozos de brownie masticable, fudge de chocolate y trozos de chocolate.
+                        </p>
+                        <div class="tech-specs">
+                            <div class="spec"><span>Rendimiento:</span> 12-15 personas</div>
+                            <div class="spec"><span>Calorías:</span> 380 kcal / porción</div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">$529.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Pastel Brownie', 529)">Ordenar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/pastelmazapan.jpg" alt="Pastel Mazapán">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">Edición Especial</span>
+                        <h2>Blizzard® Mazapán</h2>
+                        <p class="description">
+                            El sabor tradicional de México convertido en pastel. Helado cremoso con auténtico mazapán.
+                        </p>
+                        <div class="tech-specs">
+                            <div class="spec"><span>Peso:</span> 1.2 kg aprox.</div>
+                            <div class="spec"><span>Alérgenos:</span> Cacahuate, Lácteos</div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">$489.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Pastel Mazapán', 489)">Ordenar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 4 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/pastelchocofresa.jpg" alt="Pastel Choco Fresa">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">Fresas Dulces</span>
+                        <h2>Choco Fresa</h2>
+                        <p class="description">
+                            Helado de vainilla con fresas, capa de chocolate y corazón crujiente.
+                        </p>
+                        <div class="tech-specs">
+                            <div class="spec"><span>Rendimiento:</span> 6-8 personas</div>
+                            <div class="spec"><span>Personalizable:</span> Sí</div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">$399.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Pastel Choco Fresa', 399)">Ordenar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 Dairy Queen México - Catálogo Técnico de Productos</p>
+        </footer>
+
+    </div> <!-- Fin de main-content-wrapper -->
+
+    <!-- 2. CARRITO: Fuera del wrapper -->
+    <aside id="side-cart">
+        <div class="panel-tab" onclick="toggleCart()">
+            🛒 <span id="cart-count-tab">0</span>
+        </div>
+
+        <div class="panel-content">
+            <div class="panel-header">
+                <h2>🍦 Mi Pedido</h2>
+                <button class="close-btn" onclick="toggleCart()">✖</button>
+            </div>
+
+            <div class="branch-select">
+                <label>Selecciona Sucursal:</label>
+                <select id="sucursal">
+                    <option>DQ Villahermosa</option>
+                    <option>DQ Cárdenas</option>
+                    <option>DQ Comalcalco</option>
+                    <option>DQ Macuspana</option>
+                </select>
+            </div>
+
+            <div id="cart-items-list" class="items-list">
+                <p class="empty-msg">Tu carrito está vacío</p>
+            </div>
+
+            <div class="panel-footer">
+                <div class="total-line">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+<!-- Botón Principal -->
+    <button class="btn-confirmar" onclick="confirmarPedido()">
+        CONFIRMAR PEDIDO
+    </button>
+
+    <!-- Botón Limpiar -->
+    <button class="btn-clear" onclick="limpiarCarrito()">
+        Limpiar Todo
+    </button>
+
+    <!-- Compra anterior -->
+    <button class="btn-clear" onclick="verCompraAnterior()">
+        Ver compra anterior
+    </button>
+
+</div>
+   
+        </div>
+    </aside>
+
+<!-- Modal General Dinámico -->
+<div id="modal-container" class="modal-overlay">
+    <div class="modal-content dq-card-style">
+        <div class="modal-header">
+            <span id="modal-icon">🍦</span>
+            <h2 id="modal-title">Título</h2>
+        </div>
+        <div class="modal-body">
+            <p id="modal-text">Mensaje aquí...</p>
+        </div>
+        <div class="modal-footer">
+            <!-- El JS ocultará o mostrará el botón Cancelar según la config -->
+            <button id="modal-btn-secondary" onclick="cerrarDqModal()">Cancelar</button>
+            <button id="modal-btn-primary">Aceptar</button>
+        </div>
+    </div>
+</div>            </div>
+        </div>
+    </aside>
+
+    <!-- JS -->
+    <script src="card.js"></script>
+
+</body>
+</html>

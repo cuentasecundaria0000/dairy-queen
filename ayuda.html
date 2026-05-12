@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda | Dairy Queen®</title>
+    <link rel="stylesheet" href="ayuda.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="index.html"><img src="img/logo.png" alt="logo"></a>
+    </div>
+    <nav>
+         <!-- BUSCADOR CON CONTENEDOR DE SUGERENCIAS -->
+        <div class="search-container" style="position: relative;">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar productos..." autocomplete="off">
+                <button id="searchBtn">🔍</button>
+            </div>
+            <!-- ESTA LÍNEA ES LA QUE TE FALTABA -->
+            <div id="suggestions" class="suggestions-box"></div>
+        </div>
+        <a href="index.html" class="btn-nav">INICIO</a>
+        <a href="nosotros.html" class="btn-nav">SOBRE NOSOTROS</a>
+        <a href="faq.html" class="btn-nav">PREGUNTAS</a>
+    </nav>
+</header>
+
+<section class="help-hero">
+    <div class="card-animated">
+        <h1>Centro de Ayuda 24/7</h1>
+        <p>Estamos aquí para ti en cualquier momento, los 365 días del año.</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="contact-grid">
+        <div class="contact-card card-animated">
+            <div class="icon">💬</div>
+            <h3>Chat en Vivo</h3>
+            <p>Habla con nuestro asistente virtual o un agente en tiempo real.</p>
+            <button class="btn-general" onclick="toggleChat()">Iniciar Chat</button>
+        </div>
+
+        <div class="contact-card card-animated" style="animation-delay: 0.2s;">
+            <div class="icon">📞</div>
+            <h3>Línea Directa</h3>
+            <p>Atención telefónica para emergencias con tu pedido.</p>
+            <a href="tel:9931234567" class="btn-general">Llamar Ahora</a>
+        </div>
+
+        <div class="contact-card card-animated" style="animation-delay: 0.4s;">
+            <div class="icon">📧</div>
+            <h3>Correo Soporte</h3>
+            <p>Escríbenos y recibe respuesta en menos de 2 horas.</p>
+            <a href="mailto:ayuda@dq.com" class="btn-general">Enviar Email</a>
+        </div>
+    </div>
+
+    <section class="ticket-section card-animated">
+        <h2>¿Tienes un problema con tu Blizzard®?</h2>
+        <p>Completa el formulario y le daremos seguimiento inmediato.</p>
+        <form class="help-form">
+            <div class="form-group">
+                <input type="text" placeholder="Tu Nombre Completo" required>
+                <input type="email" placeholder="Correo Electrónico" required>
+            </div>
+            <select required>
+                <option value="">¿Cuál es el motivo?</option>
+                <option value="pedido">Problema con mi Pedido</option>
+                <option value="pago">Error en el Pago</option>
+                <option value="sugerencia">Sugerencia o Queja</option>
+                <option value="otros">Otros</option>
+            </select>
+            <textarea placeholder="Cuéntanos más detalles..." rows="5" ></textarea>
+            <button type="submit" class="btn-submit">Enviar Ticket de Ayuda</button>
+        </form>
+    </section>
+</div>
+
+<div class="chat-widget" id="chatWidget">
+    <div class="chat-header">
+        <span>Asistente Virtual DQ®</span>
+        <button onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-body">
+        <div class="message bot">¡Hola! 🍦 Soy el asistente de DQ. ¿En qué puedo ayudarte hoy?</div>
+    </div>
+    <div class="chat-footer">
+        <input type="text" placeholder="Escribe tu duda...">
+        <button>➤</button>
+    </div>
+</div>
+<div id="modalExito" class="modal-ayuda"style="display: none;">
+    <div class="modal-ayuda-contenido">
+        <div class="icono-check">✔</div>
+        <h2>Solicitud enviada</h2>
+        <p>Manténgase al tanto en caso de una respuesta.</p>
+        <button onclick="cerrarModal()" class="btn-cerrar-modal">Entendido</button>
+    </div>
+</div>
+<footer>
+    <div class="ayuda">
+        <a href="nosotros.html" class="btn-nav">SOBRE NOSOTROS</a>
+        <a href="preguntas.html" class="btn-nav">PREGUNTAS</a>
+        <a href="#" class="btn-nav active">AYUDA</a>
+    </div>
+    <div id="modalError" class="modal-error"style="display: none;">
+    <div class="modal-error-contenido">
+        <div class="icono-error">!</div>
+        <h2>Campos Incompletos</h2>
+        <p id="mensajeError">Por favor, completa todos los campos marcados en rojo.</p>
+        <button onclick="cerrarModalError()" class="btn-reintentar">Revisar</button>
+    </div>
+</div>
+
+<div id="modalErrorEmail" class="modal-error-email"style="display: none;">
+    <div class="modal-error-content">
+        <div class="error-circle">!</div>
+        <h2>Correo Inválido</h2>
+        <p>Asegúrate de incluir un <b>@</b> y un <b>dominio.com</b> para poder contactarte.</p>
+        <button class="btn-entendido" onclick="cerrarModalEmail()">Corregir</button>
+    </div>
+</div>
+    <p>© 2026 Dairy Queen</p>
+</footer>
+
+<script>
+    function toggleChat() {
+        const chat = document.getElementById('chatWidget');
+        chat.classList.toggle('active');
+    }
+</script>
+<script>
+// --- Lógica para el Buscador ---
+const productosDQ = [
+    { nombre: "Blizzards", link: "card1.html" },
+    { nombre: "Pasteles DQ", link: "card2.html" },
+    { nombre: "Helados DQ", link: "card3.html" },
+    { nombre: "Bebidas DQ", link: "card4.html" },
+    { nombre: "Promociones", link: "promociones.html" },
+    { nombre: "Sucursales", link: "sucursales.html" },
+    { nombre: "Preguntas Frecuentes", link: "preguntas.html" },
+    { nombre: "Sobre Nosotros", link: "nosotros.html" }
+];
+
+const inputBusqueda = document.getElementById("searchInput");
+const sugerenciasBox = document.getElementById("suggestions");
+const botonBusqueda = document.getElementById("searchBtn");
+
+// Función para mostrar sugerencias mientras escribes
+inputBusqueda.addEventListener("input", () => {
+    const texto = inputBusqueda.value.toLowerCase().trim();
+    sugerenciasBox.innerHTML = "";
+
+    if (texto === "") {
+        sugerenciasBox.style.display = "none";
+        return;
+    }
+
+    const filtrados = productosDQ.filter(p => p.nombre.toLowerCase().includes(texto));
+
+    if (filtrados.length > 0) {
+        filtrados.forEach(p => {
+            const div = document.createElement("div");
+            div.className = "suggestion-item";
+            div.innerHTML = `🔍 ${p.nombre}`;
+            div.onclick = () => { window.location.href = p.link; };
+            sugerenciasBox.appendChild(div);
+        });
+        sugerenciasBox.style.display = "block"; // MUESTRA LA CAJA
+    } else {
+        sugerenciasBox.style.display = "none";
+    }
+});
+
+// Función para el botón de búsqueda
+function realizarBusqueda() {
+    const texto = inputBusqueda.value.toLowerCase().trim();
+    const coincidencia = productosDQ.find(p => p.nombre.toLowerCase().includes(texto));
+    
+    if (coincidencia) {
+        window.location.href = coincidencia.link;
+    } else if (texto !== "") {
+        alert("No se encontró el producto.");
+    }
+}
+
+botonBusqueda.addEventListener("click", realizarBusqueda);
+inputBusqueda.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") realizarBusqueda();
+});
+
+// Cerrar sugerencias al hacer clic fuera
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-container")) {
+        sugerenciasBox.style.display = "none";
+    }
+});
+
+// Lógica del Chat Widget (Separada para evitar errores)
+function toggleChat() {
+    const chat = document.getElementById('chatWidget');
+    if(chat) chat.classList.toggle('active');
+}
+// --- LÓGICA DE MODALES Y FORMULARIO ---
+const btnEnviar = document.querySelector('.btn-submit');
+const modalExito = document.getElementById('modalExito');
+const modalError = document.getElementById('modalError');
+const modalErrorEmail = document.getElementById('modalErrorEmail');
+const formulario = document.querySelector('.help-form');
+
+const reglaCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+btnEnviar.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    const campos = formulario.querySelectorAll('input[required], select[required]');
+    const campoEmail = formulario.querySelector('input[type="email"]');
+    const campoTextarea = formulario.querySelector('textarea'); // Opcional si no tiene required
+
+    let todoLleno = true;
+    let emailValido = true;
+
+    // 🔴 1. Validar campos vacíos
+    campos.forEach(campo => {
+        if (!campo.value.trim()) {
+            todoLleno = false;
+            campo.style.border = "2px solid red";
+        } else {
+            campo.style.border = "1px solid #ddd";
+        }
+    });
+
+    // 🔴 2. Validar email
+    if (campoEmail) {
+        if (!reglaCorreo.test(campoEmail.value)) {
+            emailValido = false;
+            campoEmail.style.border = "2px solid red";
+        }
+    }
+
+    // ⚡ 3. Lógica de Modales
+   if (!todoLleno) {
+    document.getElementById('modalError').style.display = 'flex';
+    return;
+}
+
+if (!emailValido) {
+    document.getElementById('modalErrorEmail').style.display = 'flex';
+    return;
+}
+
+// Si todo está bien
+document.getElementById('modalExito').style.display = 'flex';
+    formulario.reset();
+    // Limpiar bordes rojos después de enviar
+    campos.forEach(c => c.style.border = "1px solid #ddd");
+});
+
+// --- FUNCIONES PARA CERRAR MODALES ---
+function cerrarModal() {
+    modalExito.style.display = 'none';
+}
+
+function cerrarModalError() {
+    modalError.style.display = 'none';
+}
+
+function cerrarModalEmail() {
+    modalErrorEmail.style.display = 'none';
+}
+</script>
+
+</body>
+</html>

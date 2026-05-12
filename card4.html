@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bebidas y Moolattés | Dairy Queen</title>
+
+    <!-- CSS Unificado -->
+    <link rel="stylesheet" href="card1.css">
+</head>
+
+<body>
+
+    <!-- 1. WRAPPER PRINCIPAL: Todo lo que se debe desplazar al abrir el carrito -->
+    <div class="main-content-wrapper">
+
+        <header class="navbar">
+            <div class="container nav-content">
+                <div class="logo">
+                    <img src="img/logo.png" alt="DQ Logo">
+                </div>
+                <nav class="top-buttons">
+                    <a href="index.html">Inicio</a>
+                    <a href="card3.html">Atrás</a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero-catalog" style="background: linear-gradient(135deg, #6b4226 0%, #3e2716 100%);">
+            <h1>BEBIDAS FRÍAS DQ®</h1>
+            <p>Refrescantes, cremosas y llenas de sabor</p>
+        </section>
+
+        <main class="container">
+            <div class="catalog-grid">
+
+                <!-- PRODUCTO 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/molatemocha.jpg" alt="Moolatté Mocha">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">Café Helado</span>
+                        <h2>Moolatté Mocha</h2>
+                        <p class="description">
+                            Exquisita mezcla de café, chocolate mocha y nuestro cremoso helado suave.
+                        </p>
+                        <div class="price-section">
+                            <span class="price">$75.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Moolatté Mocha', 75)">
+                                Ordenar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/malteadatradicional.png" alt="Malteada">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">Cremosa</span>
+                        <h2>Malteada Tradicional</h2>
+                        <p class="description">
+                            Clásica malteada batida a la perfección con tu sabor favorito.
+                        </p>
+                        <div class="price-section">
+                            <span class="price">$65.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Malteada', 65)">
+                                Ordenar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/mistyslush.jpg" alt="Misty Slush">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">Sin Lácteos</span>
+                        <h2>Misty Slush</h2>
+                        <p class="description">
+                            La bebida de granizado más refrescante, disponible en varios sabores frutales.
+                        </p>
+                        <div class="price-section">
+                            <span class="price">$45.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Misty Slush', 45)">
+                                Ordenar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 4 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/molatecaramel.jpg" alt="Moolatté Caramelo">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">Café Helado</span>
+                        <h2>Moolatté Caramelo</h2>
+                        <p class="description">
+                            Combinación dulce de café y caramelo, mezclado con helado suave DQ.
+                        </p>
+                        <div class="price-section">
+                            <span class="price">$75.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Moolatté Caramelo', 75)">
+                                Ordenar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 Dairy Queen Tabasco</p>
+        </footer>
+
+    </div> <!-- Fin main-content-wrapper -->
+
+    <!-- 2. CARRITO: Estructura fija fuera del wrapper -->
+    <aside id="side-cart">
+        <div class="panel-tab" onclick="toggleCart()">
+            🛒 <span id="cart-count-tab">0</span>
+        </div>
+
+        <div class="panel-content">
+            <div class="panel-header">
+                <h2>🍦 Mi Pedido</h2>
+                <button class="close-btn" onclick="toggleCart()">✖</button>
+            </div>
+
+            <div class="branch-select">
+                <label>Selecciona Sucursal:</label>
+                <select id="sucursal">
+                    <option>DQ Villahermosa</option>
+                    <option>DQ Cárdenas</option>
+                    <option>DQ Comalcalco</option>
+                    <option>DQ Macuspana</option>
+                </select>
+            </div>
+
+            <div id="cart-items-list" class="items-list">
+                <p class="empty-msg">Tu carrito está vacío</p>
+            </div>
+
+            <div class="panel-footer">
+                <div class="total-line">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+<!-- Botón Principal -->
+    <button class="btn-confirmar" onclick="confirmarPedido()">
+        CONFIRMAR PEDIDO
+    </button>
+
+    <!-- Botón Limpiar -->
+    <button class="btn-clear" onclick="limpiarCarrito()">
+        Limpiar Todo
+    </button>
+
+    <!-- Compra anterior -->
+    <button class="btn-clear" onclick="verCompraAnterior()">
+        Ver compra anterior
+    </button>
+
+</div>
+   
+        </div>
+    </aside>
+
+<!-- Modal General Dinámico -->
+<div id="modal-container" class="modal-overlay">
+    <div class="modal-content dq-card-style">
+        <div class="modal-header">
+            <span id="modal-icon">🍦</span>
+            <h2 id="modal-title">Título</h2>
+        </div>
+        <div class="modal-body">
+            <p id="modal-text">Mensaje aquí...</p>
+        </div>
+        <div class="modal-footer">
+            <!-- El JS ocultará o mostrará el botón Cancelar según la config -->
+            <button id="modal-btn-secondary" onclick="cerrarDqModal()">Cancelar</button>
+            <button id="modal-btn-primary">Aceptar</button>
+        </div>
+    </div>
+</div>            </div>
+        </div>
+    </aside>
+
+    <!-- JS -->
+    <script src="card.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Blizzard® | Dairy Queen</title>
+    <link rel="stylesheet" href="card1.css">
+</head>
+<body>
+
+    <!-- 1. WRAPPER PRINCIPAL: Todo lo que se debe encoger/reacomodar -->
+    <div class="main-content-wrapper">
+        
+        <header class="navbar">
+            <div class="container nav-content">
+                <div class="logo">
+                    <img src="img/logo.png" alt="DQ Logo">
+                </div>
+                <nav class="top-buttons">
+                    <a href="index.html">Inicio</a>
+                    <a href="card2.html">Siguiente</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="container">
+            <section class="hero-catalog" style="background: linear-gradient(135deg, #e4181e 0%, #b01217 100%);">
+                <h1>BLIZZARD® TREATS</h1>
+                <p>Servido al revés o es gratis*</p>
+            </section>
+
+            <!-- El Grid de productos -->
+            <div class="catalog-grid">
+                
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/bizzardoreo.jpg" alt="Oreo">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">El Favorito</span>
+                        <h2>Blizzard® Oreo®</h2>
+                        <p class="description">Nuestro icónico helado suave de vainilla mezclado con trozos crujientes de galleta Oreo®.</p>
+                        <div class="tech-specs">
+                            <div class="spec"><span>Textura:</span> Cremosa con trozos</div>
+                            <div class="spec"><span>Base:</span> Vainilla DQ</div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">$55.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Blizzard Oreo', 55)">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/chocobrowni.jpg" alt="Brownie">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">Chocolate Intenso</span>
+                        <h2>Choco Brownie Extreme</h2>
+                        <p class="description">Trozos de brownie masticable, pepitas de chocolate y fudge caliente.</p>
+                        <div class="tech-specs">
+                            <div class="spec"><span>Calorías:</span> 640 kcal</div>
+                            <div class="spec"><span>Sabor:</span> Doble Chocolate</div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">$69.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Choco Brownie', 69)">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/blizzardreesee.jpg" alt="Reese">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">Premium</span>
+                        <h2>Blizzard® Reese's®</h2>
+                        <p class="description">Trozos de tarta de mantequilla de cacahuate Reese's® mezclados con helado.</p>
+                        <div class="tech-specs">
+                            <div class="spec"><span>Sabor:</span> Dulce y Salado</div>
+                            <div class="spec"><span>Ingrediente:</span> Reese's Original</div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">$65.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Blizzard Reese', 65)">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/cheescake.jpg" alt="Cheesecake">
+                    </div>
+                    <div class="product-info">
+                        <span class="category">Frutal</span>
+                        <h2>Strawberry Cheesecake</h2>
+                        <p class="description">Auténticos trozos de pastel de queso y fresas naturales.</p>
+                        <div class="tech-specs">
+                            <div class="spec"><span>Fruta:</span> Fresa natural</div>
+                            <div class="spec"><span>Textura:</span> Suave con trozos</div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">$65.00</span>
+                            <button class="buy-btn" onclick="agregarAlCarrito('Strawberry Cheesecake', 65)">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- Fin de catalog-grid -->
+
+            <div class="tech-footer-info">
+                <h3>📌 Especificaciones Técnicas Generales:</h3>
+                <ul>
+                    <li><strong>Temperatura:</strong> -5°C a -7°C para servido invertido.</li>
+                    <li><strong>Calidad:</strong> Mezclado por 10 segundos exactos.</li>
+                    <li><strong>Empaque:</strong> Vaso térmico de alta densidad.</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 Dairy Queen México</p>
+        </footer>
+
+    </div> <!-- Fin de main-content-wrapper -->
+
+    <!-- 2. CARRITO: Fuera del wrapper para que flote a la derecha -->
+    <aside id="side-cart">
+        <div class="panel-tab" onclick="toggleCart()">
+            <span class="tab-icon">🛒</span>
+            <span id="cart-count-tab">0</span>
+        </div>
+
+        <div class="panel-content">
+            <div class="panel-header">
+                <h2>🍦 Mi Pedido</h2>
+                <button class="close-btn" onclick="toggleCart()">✖</button>
+            </div>
+
+            <div class="branch-select">
+                <label>Selecciona Sucursal:</label>
+                <select id="sucursal">
+                    <option>DQ Villahermosa</option>
+                    <option>DQ Cárdenas</option>
+                    <option>DQ Comalcalco</option>
+                    <option>DQ Macuspana</option>
+                </select>
+            </div>
+
+            <div id="cart-items-list" class="items-list">
+                <p class="empty-msg">Tu carrito está vacío</p>
+            </div>
+
+            <div class="panel-footer">
+
+    <div class="total-line">
+        <span>Total:</span>
+        <span id="cart-total">$0.00</span>
+    </div>
+
+    <!-- Botón Principal -->
+    <button class="btn-confirmar" onclick="confirmarPedido()">
+        CONFIRMAR PEDIDO
+    </button>
+
+    <!-- Botón Limpiar -->
+    <button class="btn-clear" onclick="limpiarCarrito()">
+        Limpiar Todo
+    </button>
+
+    <!-- Compra anterior -->
+    <button class="btn-clear" onclick="verCompraAnterior()">
+        Ver compra anterior
+    </button>
+
+</div>
+   
+        </div>
+    </aside>
+
+<!-- Modal General Dinámico -->
+<div id="modal-container" class="modal-overlay">
+    <div class="modal-content dq-card-style">
+        <div class="modal-header">
+            <span id="modal-icon">🍦</span>
+            <h2 id="modal-title">Título</h2>
+        </div>
+        <div class="modal-body">
+            <p id="modal-text">Mensaje aquí...</p>
+        </div>
+        <div class="modal-footer">
+            <!-- El JS ocultará o mostrará el botón Cancelar según la config -->
+            <button id="modal-btn-secondary" onclick="cerrarDqModal()">Cancelar</button>
+            <button id="modal-btn-primary">Aceptar</button>
+        </div>
+    </div>
+</div>
+    <!-- Scripts -->
+    <script src="card.js"></script>
+</body>
+</html>
